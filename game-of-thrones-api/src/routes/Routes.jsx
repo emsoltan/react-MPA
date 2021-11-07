@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Header from "../components/Header";
 import Home from "../components/Home";
-import Houses from "../components/pages/Houses";
+import Stark from "../components/pages/Stark";
 import Footer from "../components/Footer";
 import NotFound404 from "../components/pages/NotFound404";
 const Routes = () => (
@@ -14,7 +14,7 @@ const Routes = () => (
     <Header />
     <Switch>
       <Route path="/" exact="true" element={<Home />} />
-      <Route path="/houses" element={<Houses />} />
+      <Route path="/stark" element={<Stark />} />
       <Route element={<NotFound404 />} />
     </Switch>
 

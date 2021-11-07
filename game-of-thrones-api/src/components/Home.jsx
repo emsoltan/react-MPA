@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../src/App.css"
 import useFetch from "../customHooks/useFetch";
 
 const Home = () => {
-  const url = "https://www.anapioficeandfire.com/api/houses?page&pageSize";
+  // link to fetch house names for home page
+  const url = "https://game-of-thrones-quotes.herokuapp.com/v1/houses";
+
+  //link to fetch individual houses with their details : https://game-of-thrones-quotes.herokuapp.com/v1/house/lannister ***replace lannister with variable with each house name
+
   const initialState = { results: [], loading: true, error: null };
   const { results, loading, error } = useFetch(url, initialState);
   if (loading) {
@@ -16,19 +21,19 @@ const Home = () => {
 
   if (error) return <h4>{error}</h4>;
 
-  const items = results.map((item) => (
-    <li key={item.name}>
-      <Link to={`/houses/${item.name}`}>
-        <h4>
-          {item.name}
-          <br />
-          {item.seats}
-        </h4>
-      </Link>
-    </li>
+  const items = results.map((item, index) => (
+    
+      <ul className="section-list" >
+        <li key={item.name} >
+          <Link to={`/houses/${item.name}`}>
+            <h4>{item.name}</h4>
+          </Link>
+        </li>
+      </ul>
+   
   ));
-console.log(items)
-  return <section>{items}</section>;
+  console.log(items);
+  return <section className="section-content" >{items}</section>;
 };
 
 export default Home;
